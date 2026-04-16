@@ -4,6 +4,7 @@ namespace App\Http\Resources\Categoria;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Carbon\Carbon;
 
 class CategoriaResource extends JsonResource
 {
@@ -12,14 +13,9 @@ class CategoriaResource extends JsonResource
         return [
             'id' => $this->id,
             'nombre' => $this->nombre,
-            'user_id' => $this->user_id,
-            'user' => $this->whenLoaded('user'),
-            'created_by' => $this->created_by,
-            'updated_by' => $this->updated_by,
-            'deleted_by' => $this->deleted_by,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'deleted_at' => $this->deleted_at,
+            'estado' => $this->estado,
+            'fecha_creacion' => Carbon::parse($this->created_at)->format('d-m-Y h:i:s A'),
+            'fecha_actualizacion' => Carbon::parse($this->updated_at)->format('d-m-Y h:i:s A'),
         ];
     }
 }

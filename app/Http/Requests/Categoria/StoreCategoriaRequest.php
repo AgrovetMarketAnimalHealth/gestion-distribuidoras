@@ -15,7 +15,7 @@ class StoreCategoriaRequest extends FormRequest
     {
         return [
             'nombre' => 'required|string|max:255|unique:categorias,nombre',
-            'user_id' => 'required|exists:users,id',
+            'estado' => 'required|boolean',
         ];
     }
 }

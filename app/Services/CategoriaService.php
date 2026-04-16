@@ -42,6 +42,8 @@ class CategoriaService
         return DB::transaction(function () use ($id) {
             $categoria = Categoria::withTrashed()->findOrFail($id);
             $categoria->deleted_by = null;
+            $categoria->updated_by = Auth::id();
+            $categoria->save();
             $categoria->restore();
             
             return $categoria;

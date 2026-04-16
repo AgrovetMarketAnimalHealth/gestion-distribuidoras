@@ -21,7 +21,7 @@ class UpdateCategoriaRequest extends FormRequest
                 'max:255',
                 Rule::unique('categorias')->ignore($this->route('categoria'))
             ],
-            'user_id' => 'required|exists:users,id',
+            'estado' => 'required|boolean',
         ];
     }
 }
