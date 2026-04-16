@@ -11,6 +11,6 @@ use Inertia\Response;
 class PopWebController extends Controller{
     public function index(): Response{
         Gate::authorize('viewAny', Pop::class);
-        return Inertia::render('panel/Pop/indexPop');
+        return Inertia::render('panel/Pops/indexPop');
     }
 }
