@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\Panel\AreaController;
 use App\Http\Controllers\Panel\CategoriaController;
-use App\Http\Controllers\Web\AreaWebController;
+use App\Http\Controllers\Panel\PopController;
 use App\Http\Controllers\Web\CategoriaWebController;
 use App\Http\Controllers\Web\DistribuidoraWebController;
 use App\Http\Controllers\Web\PopWebController;
@@ -31,7 +30,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
  
     #BACKEND => CATEGORIAS
     Route::apiResource('categorias', CategoriaController::class);
-    Route::post('categorias/{id}/restore', [CategoriaController::class, 'restore']);
+
+    #BACKEND => POPS
+    Route::apiResource('pop', PopController::class);
+    Route::post('pop/{id}/restore', [PopController::class, 'restore']);
 });
 
 require __DIR__.'/settings.php';

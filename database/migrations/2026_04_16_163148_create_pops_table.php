@@ -15,10 +15,29 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('nombre')->unique();
             $table->boolean('estado')->default(true);
-            $table->uuid('user_id');
+
+            $table->uuid('created_by')->nullable();
+            $table->uuid('updated_by')->nullable();
+            $table->uuid('deleted_by')->nullable();
+            
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete();
+            
+            // Llaves foráneas
+            $table->foreign('created_by')
+                ->references('id')
+                ->on('users')
+                ->nullOnDelete();
+                
+            $table->foreign('updated_by')
+                ->references('id')
+                ->on('users')
+                ->nullOnDelete();
+                
+            $table->foreign('deleted_by')
+                ->references('id')
+                ->on('users')
+                ->nullOnDelete();
         });
     }
 
